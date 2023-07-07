@@ -1,0 +1,146 @@
+
+<h1>Sequence Checker</h1>
+<div class="search-container">
+
+
+    <div class="sender">
+      <input type="submit" value="Go" class="sub" (click)="getJackpot()">
+<input type="text" class="inputIn" [(ngModel)]="jackPot" minlength="5" required="add"
+maxlength="12" >
+    </div>
+    <pre></pre>
+
+
+
+
+  <div class="adder">  <button class="add" (click)="addSequence()"> Add </button>
+    <input type="text" class="dataIn" [(ngModel)]="seq"></div>
+
+</div>
+<table>
+
+<tr>
+
+<td title="Jackpot! All Numbers much!">
+  <div class="resp">
+  <div class="alljackpots" >
+    <div  class="">
+      <ul style="list-style-type: none;">
+        <li>{{allMatches}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</td>
+
+
+<td title="Missed One Number!">
+
+  <div class="resp">
+    <div class="scroll-content">
+
+      <div class="allMatches" >
+        <div *ngFor="let matches of fourMatches"  class="">
+          <ul style="list-style-type: none;">
+            <li>{{matches.sequence}}</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</td>
+
+
+
+<td title="Matched Matched 3!">
+
+  <div class="resp">
+    <div class="scroll-content">
+
+      <div class="allMatches" >
+        <div *ngFor="let matches of threeMatches"  class="">
+          <ul style="list-style-type: none;">
+            <li>{{matches.sequence}}</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</td>
+
+
+<td title="Only Matched Two!">
+
+  <div class="resp">
+    <div class="scroll-content">
+
+      <div class="allMatches" >
+        <div *ngFor="let matches of twoMatches"  class="">
+          <ul style="list-style-type: none;">
+            <li>{{matches.sequence}}</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</td>
+
+<td title="Only One Number matched!">
+
+  <div class="resp">
+    <div class="scroll-content">
+
+      <div class="allMatches" >
+        <div *ngFor="let matches of oneMatches"  class="">
+          <ul style="list-style-type: none;">
+            <li>{{matches.sequence}}</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</td>
+
+
+
+
+
+
+
+</tr>
+
+</table>
+
+<pre></pre>
+<br>
+
+<button class="dropdown" (click)="toggleDropdown()">View All Sequences</button>
+
+<div class="scrollable-content">
+  <td title="All Sequences">
+    <div class="allSequences" *ngIf="showDropDown">
+      <div *ngFor="let sequences of sequence" class="">
+        <ul style="list-style-type: none;">
+          <li>{{sequences.sequence}}</li>
+        </ul>
+      </div>
+    </div>
+  </td>
+</div>
+
+
+
+
+
