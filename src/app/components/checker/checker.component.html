@@ -22,6 +22,7 @@ maxlength="12" >
 <tr>
 
 <td title="Jackpot! All Numbers much!">
+  <h2 class="price">+$100K=><button class="btn" (click)="confirmJackpot()">confirm</button></h2>
   <div class="resp">
   <div class="alljackpots" >
     <div  class="">
@@ -35,7 +36,8 @@ maxlength="12" >
 
 
 <td title="Missed One Number!">
-
+  <h2 *ngFor="let matches of fourMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*300}}</ng-container>
+  </h2>
   <div class="resp">
     <div class="scroll-content">
 
@@ -56,7 +58,8 @@ maxlength="12" >
 
 
 <td title="Matched Matched 3!">
-
+  <h2 *ngFor="let matches of threeMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*10}}</ng-container>
+  </h2>
   <div class="resp">
     <div class="scroll-content">
 
@@ -76,7 +79,8 @@ maxlength="12" >
 
 
 <td title="Only Matched Two!">
-
+  <h2 *ngFor="let matches of twoMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*2}}</ng-container>
+  </h2>
   <div class="resp">
     <div class="scroll-content">
 
@@ -95,7 +99,8 @@ maxlength="12" >
 </td>
 
 <td title="Only One Number matched!">
-
+  <h2 *ngFor="let matches of oneMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag}}</ng-container>
+  </h2>
   <div class="resp">
     <div class="scroll-content">
 

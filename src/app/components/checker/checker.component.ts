@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { sequence } from 'src/app/sequence';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router'
 
 import { SequencerService } from 'src/app/service/sequencer.service';
 import { Title } from '@angular/platform-browser';
@@ -28,7 +29,8 @@ export class CheckerComponent implements OnInit {
   showDropDown: boolean = false;
   constructor(
     private seqService: SequencerService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,24 +41,10 @@ export class CheckerComponent implements OnInit {
     this.showDropDown = !this.showDropDown;
     return this.showDropDown;
   }
-/**
- *To eliminate duplicates
- * @param numbers
- * @returns
- */
-  public removeDuplicates(seqs: string): Set<string> {
 
-    const uniqueSet: Set<string> = new Set();
-    uniqueSet.add(seqs);
-
-
-
-    // Convert the Set back to a list
-    const uniqueList: string[] = Array.from(uniqueSet);
-    console.log("->"+uniqueList)
-
-
-    return uniqueSet;
+  public confirmJackpot(): void {
+    const url = 'https://www.ohiolottery.com/Games/DrawGames/Rolling-Cash-5';
+    window.location.href = url;
   }
 
   /**
@@ -91,7 +79,7 @@ export class CheckerComponent implements OnInit {
 
     this.seqService.retrieve4SeqList(body).subscribe(
       (response: sequence[]) => {
-        this.fourMatches = response.reverse()
+        this.fourMatches = response;
 
         console.log(this.fourMatches);
         this.get1sequenceSeries()
@@ -113,7 +101,7 @@ export class CheckerComponent implements OnInit {
 
   this.seqService.retrieve3SeqList(body).subscribe(
     (response: sequence[]) => {
-      this.threeMatches = response.reverse();
+      this.threeMatches = response;
       console.log(this.threeMatches);
       this.get2sequenceSeries();
     },
@@ -133,7 +121,7 @@ export class CheckerComponent implements OnInit {
 
   this.seqService.retrieve2SeqList(body).subscribe(
     (response: sequence[]) => {
-      this.twoMatches = response.reverse();
+      this.twoMatches = response;
       console.log(this.twoMatches);
 
     },
@@ -153,7 +141,7 @@ export class CheckerComponent implements OnInit {
 
   this.seqService.retrieve1SeqList(body).subscribe(
     (response: sequence[]) => {
-      this.oneMatches = response.reverse();
+      this.oneMatches = response;
       console.log(this.oneMatches);
 
       console.log("Done Checking!!!");
@@ -197,6 +185,7 @@ export class CheckerComponent implements OnInit {
       sequence: this.seq,
       inputSequence: this.inputSequence,
     };
+if(body.sequence.length==0) alert("No Sequence was entered");
 
     this.seqService.addSequences(body).subscribe(
       (response: sequence) => {
