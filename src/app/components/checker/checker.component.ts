@@ -185,7 +185,7 @@ export class CheckerComponent implements OnInit {
       sequence: this.seq,
       inputSequence: this.inputSequence,
     };
-if(body.sequence.length==0) alert("No Sequence was entered");
+if(body.sequence.length==0) alert("No Sequence was entered!");
 
     this.seqService.addSequences(body).subscribe(
       (response: sequence) => {

@@ -1,135 +1,112 @@
-
 <h1>Sequence Checker</h1>
 <div class="search-container">
+  <div class="sender">
+    <input type="submit" value="Go" class="sub" (click)="getJackpot()" />
+    <input
+      type="text"
+      class="inputIn"
+      [(ngModel)]="jackPot"
+      minlength="5"
+      required="add"
+      maxlength="12"
+    />
+  </div>
+  <pre></pre>
 
-
-    <div class="sender">
-      <input type="submit" value="Go" class="sub" (click)="getJackpot()">
-<input type="text" class="inputIn" [(ngModel)]="jackPot" minlength="5" required="add"
-maxlength="12" >
-    </div>
-    <pre></pre>
-
-
-
-
-  <div class="adder">  <button class="add" (click)="addSequence()"> Add </button>
-    <input type="text" class="dataIn" [(ngModel)]="seq"></div>
-
+  <div class="adder">
+    <button class="add" (click)="addSequence()">Add</button>
+    <input type="text" class="dataIn" [(ngModel)]="seq" />
+  </div>
 </div>
 <table>
-
-<tr>
-
-<td title="Jackpot! All Numbers much!">
-  <h2 class="price">+$100K=><button class="btn" (click)="confirmJackpot()">confirm</button></h2>
-  <div class="resp">
-  <div class="alljackpots" >
-    <div  class="">
-      <ul style="list-style-type: none;">
-        <li>{{allMatches}}</li>
-      </ul>
-    </div>
-  </div>
-</div>
-</td>
-
-
-<td title="Missed One Number!">
-  <h2 *ngFor="let matches of fourMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*300}}</ng-container>
-  </h2>
-  <div class="resp">
-    <div class="scroll-content">
-
-      <div class="allMatches" >
-        <div *ngFor="let matches of fourMatches"  class="">
-          <ul style="list-style-type: none;">
-            <li>{{matches.sequence}}</li>
-          </ul>
+  <tr>
+    <td title="Jackpot! All Numbers much!">
+      <h2 class="price">
+        +$100K=><button class="btn" (click)="confirmJackpot()">confirm</button>
+      </h2>
+      <div class="resp">
+        <div class="alljackpots">
+          <div class="">
+            <ul style="list-style-type: none">
+              <li>{{ allMatches }}</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </td>
 
-    </div>
-
-
-  </div>
-</td>
-
-
-
-<td title="Matched Matched 3!">
-  <h2 *ngFor="let matches of threeMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*10}}</ng-container>
-  </h2>
-  <div class="resp">
-    <div class="scroll-content">
-
-      <div class="allMatches" >
-        <div *ngFor="let matches of threeMatches"  class="">
-          <ul style="list-style-type: none;">
-            <li>{{matches.sequence}}</li>
-          </ul>
+    <td title="Missed One Number!">
+      <h2 *ngFor="let matches of fourMatches; let last = last" class="price">
+        <ng-container *ngIf="last"> ${{ matches.tag }}</ng-container>
+      </h2>
+      <div class="resp">
+        <div class="scroll-content">
+          <div class="allMatches">
+            <div *ngFor="let matches of fourMatches" class="">
+              <ul style="list-style-type: none">
+                <li>{{ matches.sequence }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+    </td>
 
-    </div>
-
-
-  </div>
-</td>
-
-
-<td title="Only Matched Two!">
-  <h2 *ngFor="let matches of twoMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag*2}}</ng-container>
-  </h2>
-  <div class="resp">
-    <div class="scroll-content">
-
-      <div class="allMatches" >
-        <div *ngFor="let matches of twoMatches"  class="">
-          <ul style="list-style-type: none;">
-            <li>{{matches.sequence}}</li>
-          </ul>
+    <td title="Matched Matched 3!">
+      <h2 *ngFor="let matches of threeMatches; let last = last" class="price">
+        <ng-container *ngIf="last"> ${{ matches.tag }}</ng-container>
+      </h2>
+      <div class="resp">
+        <div class="scroll-content">
+          <div class="allMatches">
+            <div *ngFor="let matches of threeMatches" class="">
+              <ul style="list-style-type: none">
+                <li>{{ matches.sequence }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+    </td>
 
-    </div>
-
-
-  </div>
-</td>
-
-<td title="Only One Number matched!">
-  <h2 *ngFor="let matches of oneMatches; let last=last" class="price"> <ng-container *ngIf="last"> ${{matches.tag}}</ng-container>
-  </h2>
-  <div class="resp">
-    <div class="scroll-content">
-
-      <div class="allMatches" >
-        <div *ngFor="let matches of oneMatches"  class="">
-          <ul style="list-style-type: none;">
-            <li>{{matches.sequence}}</li>
-          </ul>
+    <td title="Only Matched Two!">
+      <h2 *ngFor="let matches of twoMatches; let last = last" class="price">
+        <ng-container *ngIf="last"> ${{ matches.tag }}</ng-container>
+      </h2>
+      <div class="resp">
+        <div class="scroll-content">
+          <div class="allMatches">
+            <div *ngFor="let matches of twoMatches" class="">
+              <ul style="list-style-type: none">
+                <li>{{ matches.sequence }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+    </td>
 
-    </div>
-
-
-  </div>
-</td>
-
-
-
-
-
-
-
-</tr>
-
+    <td title="Only One Number matched!">
+      <h2 *ngFor="let matches of oneMatches; let last = last" class="price">
+        <ng-container *ngIf="last"> ${{ matches.tag }}</ng-container>
+      </h2>
+      <div class="resp">
+        <div class="scroll-content">
+          <div class="allMatches">
+            <div *ngFor="let matches of oneMatches" class="">
+              <ul style="list-style-type: none">
+                <li>{{ matches.sequence }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
 </table>
 
 <pre></pre>
-<br>
+<br />
 
 <button class="dropdown" (click)="toggleDropdown()">View All Sequences</button>
 
@@ -137,15 +114,10 @@ maxlength="12" >
   <td title="All Sequences">
     <div class="allSequences" *ngIf="showDropDown">
       <div *ngFor="let sequences of sequence" class="">
-        <ul style="list-style-type: none;">
-          <li>{{sequences.sequence}}</li>
+        <ul style="list-style-type: none">
+          <li>{{ sequences.sequence }}</li>
         </ul>
       </div>
     </div>
   </td>
 </div>
-
-
-
-
-
