@@ -79,6 +79,7 @@ export class SequencerService {
   }
 
 
+
 /**
  *Add sequence in db
  * @param sequence any
